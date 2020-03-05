@@ -1,0 +1,45 @@
+题目：删除公共字符
+输入两个字符串，从第一个字符串中删除第二个字符串中所有的字符。
+
+输入描述：
+“They are students”
+“aeiou”
+输出描述：
+Thy r stdnts
+
+方法1：
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        String s1 = sc.nextLine();
+        String s2 = sc.nextLine();
+        ArrayList<Character> list = new ArrayList<>();
+        //如果s2中没有s1的某元素，则添加到 list 中
+        for(int i = 0;i < s1.length();i++){
+            if(!(s2.contains(s1.charAt(i)+""))){
+                list.add(s1.charAt(i));
+            }
+        }
+        //遍历 list 打印数据
+        for(int i = 0;i < list.size();i++){
+            System.out.print(list.get(i)+"");
+        }
+    }
+}
+
+
+方法二：
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNextLine()){
+            String s1 = sc.nextLine();
+            String s2 = sc.nextLine();
+            String pattern = "[" + s2 + "]";
+            String res = s1.replaceAll(pattern,"");
+            System.out.println(res);
+        }
+    }
+}
