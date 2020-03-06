@@ -1,0 +1,46 @@
+01背包的变形问题；
+递归方法：n为第n个商品的价值，w为能容纳的总重量；若吧n放进背包，w能容纳的总重量就要减去a[n],则为f(n-1,w-a[n]);若不放 则为f(n-1,w)
+import java.util.Scanner;
+public class Main {
+	static int[] a=new int[21];
+    	static int f(int n,int w){
+		if(w==0) 
+			return 1;//如果让拿的物品总重量为0，则有一种方法，即什么也不拿
+		if(n<=0)
+			return 0;//如果让拿的总重量小于等于0就无意义了，一种方法也没有
+		return f(n-1,w)+f(n-1,w-a[n]);
+	}
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+		for (int i = 1; i <= n; i++) {
+			a[i] = s.nextInt();
+		}
+		System.out.println(f(n,40));
+	}
+}
+
+动态规划：（类似于填一个二维数组的表）
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] array = new int[n+1];
+        int[][] dp = new int[n+1][41];
+        for(int i = 1;i <= n;i++){
+            array[i] = sc.nextInt();
+            dp[i][0] = 1;
+        }
+        dp[0][0] = 1;
+        for(int i = 1;i <= n;i++){
+            for(int j = 1;j <= 40;j++){
+                dp[i][j] = dp[i-1][j];
+                if(j >= array[i]){
+                    dp[i][j] += dp[i-1][j-array[i]];
+                }
+            }
+        }
+        System.out.println(dp[n][40]);
+    }
+}
