@@ -1,0 +1,35 @@
+输入描述:
+每个测试输入包含空格分割的n+1个整数，最后一个整数为k值,n
+不超过100。
+
+输出描述:
+输出n个整数里最小的k个数。升序输出
+
+示例1
+输入：
+3 9 6 8 -10 7 -11 19 30 12 23 5
+输出：
+-11 -10 3 6 7
+
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int[] arr = new int[100];
+        int i = 0;
+        while(sc.hasNextInt()){
+            arr[i] = sc.nextInt();
+            i++;
+        }
+        int[] a = new int[--i];
+        System.arraycopy(arr,0,a,0,i);
+        Arrays.sort(a);
+        for(int j = 0;j < arr[i];j++){
+            if(j == arr[i]-1){
+                System.out.print(a[j]);
+            }else{
+                System.out.print(a[j] + " ");
+            }
+        }
+    }
+}
