@@ -1,3 +1,4 @@
+
 链接：https://www.nowcoder.com/questionTerminal/5821836e0ec140c1aa29510fd05f45fc?f=discussion
 来源：牛客网
 
@@ -50,6 +51,16 @@ public class Main{
             String addend = sc.nextLine();
             String augend = sc.nextLine();
             System.out.println(AddLongInteger(addend,augend));
+        }
+    }
+    public static void main1(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            String s1 = sc.next();
+            String s2 = sc.next();
+            BigInteger num1 = new BigInteger(s1);
+            BigInteger num2 = new BigInteger(s2);
+            System.out.println(num1.add(num2));
         }
     }
 }
