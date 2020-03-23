@@ -1,0 +1,36 @@
+import java.util.*;
+public class Main{
+    static ArrayList<String> l = new ArrayList<String>();
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        while(sc.hasNext()){
+            l.clear();
+            int n = sc.nextInt();
+            int[] arr = new int[n];
+            Stack<Integer> stack = new Stack<Integer>();
+            for(int i = 0;i < n;i++){
+                arr[i] = sc.nextInt();
+            }
+            trainOut(arr,0,stack,"",0);
+            Collections.sort(l);
+            for(String str : l){
+                System.out.println(str);
+            }
+        }
+    }
+    public static void trainOut(int[] arr,int i,Stack<Integer> stack,String str,int n){
+        if(n == arr.length){
+            l.add(str);
+        }
+        if(!stack.empty()){
+            int tmp = stack.pop();
+            trainOut(arr,i,stack,str + tmp + " ",n+1);
+            stack.push(tmp);
+        }
+        if(i < arr.length){
+            stack.push(arr[i]);
+            trainOut(arr,i+1,stack,str,n);
+            stack.pop();
+        }
+    }
+}
