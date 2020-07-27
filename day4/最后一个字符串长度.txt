@@ -5,6 +5,18 @@
 如果不存在最后一个单词，请返回 0 。
 
 说明：一个单词是指仅由字母组成、不包含任何空格的 最大子字符串
+
+方法一：
+class Solution {
+    public int lengthOfLastWord(String s) {
+        String[] str = s.split(" ");
+        if(str.length == 0){
+            return 0;
+        }
+        return str[str.length-1].length();
+    }
+}
+方法二：
 class Solution {
     public int lengthOfLastWord(String s) {
         int end = s.length()-1;
